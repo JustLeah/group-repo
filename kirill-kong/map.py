@@ -101,7 +101,7 @@ room_illuminated_road= {
     "description":
     """This road is much better than the last two, you can see much clearer and it leads to many places.""",
 
-    "exits": {"west": "Dusty Path", "east": "Damp Cave", "north": "Scary Path", "South": "Abandoned House"},
+    "exits": {"west": "Dusty Path", "east": "Damp Cave", "north": "Scary Path", "south": "Abandoned House"},
     "chest": [],
     "items": [],
     "mobs" : [mob_four, mob_thirteen, mob_fourteen],
@@ -113,7 +113,7 @@ room_abandoned_house= {
     "description":
     """You are in an abandoned house, all the doors are locked, but there is a stair case leading upstairs.""",
 
-    "exits": {"upstairs": "Upstairs", "North": "Illuminated Road"},
+    "exits": {"upstairs": "Upstairs", "north": "Illuminated Road"},
     "chest": [],
     "items": [],
     "mobs": [mob_twelve, mob_eleven],

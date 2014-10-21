@@ -76,14 +76,17 @@ def fight(current_mob_id, current_room):
 	else:
 		clear = lambda: os.system('cls')
 		clear()
-		
-		if current_mob['id'] == "15":
+		if player['stats'][0] <= 0:
+			game_over()
+			exit()
+
+		if current_mob['id'] == "15" and current_mob['stats'][0] <= 0:
 			completion()
 			exit()
 
 		print("You have killed a %s!" % current_mob['name'])
-		counter = 0
-		randcounter = random.randint(0, len(current_mob['loot']))
+		counter = 1
+		randcounter = random.randint(1, len(current_mob['loot']))
 		for item in current_mob['loot']:
 			if randcounter == counter:
 				current_room['items'].append(item)
@@ -96,11 +99,7 @@ def fight(current_mob_id, current_room):
 		damage_dealt = ""
 		current_mob = "none"
 		current_room['spawned'] = []
-
-		if player['stats'][0] <= 0:
-			game_over()
-			exit()
-			
+	
 
 def fight_attack(attacker, defender):
 	global damage_dealt

@@ -23,7 +23,7 @@ def select_spawn(current_room):
     
 
 def spawn_mob(current_room):
-        mob_spawns = random.randint(1,4)
+        mob_spawns = random.randint(1,3)
         if mob_spawns <= 3 or current_room['name'] == 'The Chamber':
             print("")
             print("A " + str(select_spawn(current_room)) + " has appeared!")
