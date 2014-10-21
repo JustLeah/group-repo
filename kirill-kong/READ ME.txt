@@ -1,0 +1,25 @@
+READ ME
+
+This is the read me file for First Fictional VII this is my project for week 4!
+
+The concept
+
+Basically the plan is to try and make a game which has a fully working combat system, based on number rolls between the values 1-10. 
+You and the monsters will all have levels, experiance will be granted and there will be a fully working inventory allowing you to 
+equip new items from your "backpack" which have benifical stats such as damage and armor.
+
+The plan is to make a health counter that will always have a fixed max health of 10, the damage taken will be caluclated based on your
+armor, the enemies level and the enemies attack. 
+
+As it stands I aim to have it so that everytime you move in to a room there is a chance for a *monster* to spawn. Every monster will 
+have a loot table with a rng chance for each item. The aim will be to walk around and kill the monsters whilst getting gear to be able
+to kill the last boss *Crafty Kirill*. A set amount of armor will be required so that you aren't killed instantly, as well as needing a
+good enough weapon to be able damage him. 
+
+I've not quite decided on what will happen if you die, but I think having to start again from the beginning is the best way as I don't 
+want everyone who tries this to be able to complete it. It is designed to be hard and require some luck to beat! 
+
+My plan for the combat system is as follows, when it is your turn to attack, you have to enter a number between 0-10 (inclusive). The 
+opponet will also guess a number between 0-10, the aim if you are attacking is to get the number as far away from theirs as possible
+as the damage will be calculated as the difference between the numbers (armor will have an effect as well) e.g. I roll 7 and the oponent
+rolls 3, 7-3 = 4 so you will deal 4 damage + your bonus attack from you weapon - the targets armor. 
