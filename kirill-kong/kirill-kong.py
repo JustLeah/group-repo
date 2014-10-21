@@ -4,6 +4,7 @@ from map import rooms
 from player import *
 from items import *
 from newparse import *
+from fight import *
 import os, ctypes
 
 
@@ -336,6 +337,9 @@ def execute_command(command):
         if len(command) == 1:
             print_inventory_items(inventory)
 
+    elif command[0] == "fight":
+        fight()
+
     else:
         print("This makes no sense.")
 
@@ -382,7 +386,6 @@ def main():
 
         # Execute the player's command
         execute_command(command)
-
 
 # Are we being run as a script? If so, run main().
 # '__main__' is the name of the scope in which top-level code executes.
