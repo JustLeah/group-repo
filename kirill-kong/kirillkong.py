@@ -437,6 +437,16 @@ def examine_item(item_name):
             mobname = ' '.join(normalise_input(all_mobs[str(counter)]['name']))
             if mobname == item_name:
                 print(all_mobs[str(counter)]['description'])
+                counter = 0
+                if counter == 0:
+                    print("This mob has %i health!" % all_mobs[str(counter)]['stats'][counter])
+                    counter = counter + 1
+                if counter == 1:
+                    print("This mob has %i attack!" % all_mobs[str(counter)]['stats'][counter])
+                    counter = counter + 1
+                if counter == 2:
+                    print("This mob has %i defense!" % all_mobs[str(counter)]['stats'][counter])
+                    counter = counter + 1
                 break
             counter = counter + 1
         

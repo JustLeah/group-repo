@@ -220,11 +220,11 @@ all_items = {
     "iron helmet" : item_iron_helmet,
     "steel helmet": item_steel_helmet,
     "platinum helmet": item_platinum_helmet,
-    "leather chest": item_leather_chestplate,
-    "copper chest": item_copper_chestplate,
-    "iron chest": item_iron_chestplate,
-    "steel chest": item_steel_chestplate,
-    "platinum chest": item_platinum_chestplate
+    "leather chestplate": item_leather_chestplate,
+    "copper chestplate": item_copper_chestplate,
+    "iron chestplate": item_iron_chestplate,
+    "steel chestplate": item_steel_chestplate,
+    "platinum chestplate": item_platinum_chestplate
 
 }
 
