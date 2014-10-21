@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-
 from map import rooms
 from player import *
 from items import *
 from newparse import *
 from fight import *
+from mobs import *
 import os, ctypes
 
 

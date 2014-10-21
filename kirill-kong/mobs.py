@@ -1,4 +1,4 @@
-mob_one{
+mob_one = {
 	"id": "mobone",
 	"name": "Vicious mob one",
 	"stats": [10, 1, 1],
@@ -6,7 +6,7 @@ mob_one{
 	"loot": []
 }
 
-mob_two{
+mob_two = {
 	"id": "mobtwo",
 	"name": "Vicious mob two",
 	"stats": [10, 1, 1],
