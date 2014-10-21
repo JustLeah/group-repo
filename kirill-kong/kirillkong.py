@@ -7,6 +7,26 @@ from fight import *
 from mobs import *
 import os, ctypes
 
+def select_spawn(current_room):
+    randmob = int(random.randint(0,len((current_room["mobs"]))))
+    counter = 0
+    global spawned_mob
+    for mob in current_room["mobs"]:
+        if counter == randmob:
+            current_room["spawned"] = mob
+            spawned_mob = mob
+        counter = counter + 1
+    return spawned_mob["name"]
+
+    
+
+def spawn_mob(current_room):
+    mob_spawns = 0
+    mob_spawns = random.randint(1,2)
+    if mob_spawns <= 1:
+        print("")
+        print("A " + select_spawn(current_room) + " has appeared")
+
 def completion():
     clear = lambda: os.system('cls')
     clear()
@@ -77,30 +97,31 @@ def start():
     clear = lambda: os.system('cls')
     clear()
     print ('''
-       _  _____ ____  ___ _     _               _  _____  _   _  ____ 
-      | |/ /_ _|  _ \|_ _| |   | |             | |/ / _ \| \ | |/ ___|
-      | ' / | || |_) || || |   | |      _____  | ' / | | |  \| | |  _ 
-      | . \ | ||  _ < | || |___| |___  |_____| | . \ |_| | |\  | |_| |
-      |_|\_\___|_| \_\___|_____|_____|         |_|\_\___/|_| \_|\____|''')   
+                   _  _____ ____  ___ _     _               _  _____  _   _  ____ 
+                  | |/ /_ _|  _ \|_ _| |   | |             | |/ / _ \| \ | |/ ___|
+                  | ' / | || |_) || || |   | |      _____  | ' / | | |  \| | |  _ 
+                  | . \ | ||  _ < | || |___| |___  |_____| | . \ |_| | |\  | |_| |
+                  |_|\_\___|_| \_\___|_____|_____|         |_|\_\___/|_| \_|\____|''')   
     print ('''
-*                             |>>>                    +
-+          *                      |                   *       +
-                    |>>>      _  _|_  _   *     |>>>
-           *        |        |;| |;| |;|        |                 *
-     +          _  _|_  _    \\.    .  /    _  _|_  _       +
- *             |;|_|;|_|;|    \\: +   /    |;|_|;|_|;|
-               \\..      /    ||:+++. |    \\.    .  /           *
-      +         \\.  ,  /     ||:+++  |     \\:  .  /
-                 ||:+  |_   _ ||_ . _ | _   _||:+  |       *
-          *      ||+++.|||_|;|_|;|_|;|_|;|_|;||+++ |          +
-                 ||+++ ||.    .     .      . ||+++.|   *
-+   *            ||: . ||:.     . .   .  ,   ||:   |               *
-         *       ||:   ||:  ,     +       .  ||: , |      +
-  *              ||:   ||:.     +++++      . ||:   |         *
-     +           ||:   ||.     +++++++  .    ||: . |    +
-           +     ||: . ||: ,   +++++++ .  .  ||:   |             +
-                 ||: . ||: ,   +++++++ .  .  ||:   |        *
-                 ||: . ||: ,   +++++++ .  .  ||:   |               ''') 
+            *                             |>>>                    +
+            +          *                      |                   *       +
+                                |>>>      _  _|_  _   *     |>>>
+                       *        |        |;| |;| |;|        |                 *
+                 +          _  _|_  _    \\.    .  /    _  _|_  _       +
+             *             |;|_|;|_|;|    \\: +   /    |;|_|;|_|;|
+                           \\..      /    ||:+++. |    \\.    .  /           *
+                  +         \\.  ,  /     ||:+++  |     \\:  .  /
+                             ||:+  |_   _ ||_ . _ | _   _||:+  |       *
+                      *      ||+++.|||_|;|_|;|_|;|_|;|_|;||+++ |          +
+                             ||+++ ||.    .     .      . ||+++.|   *
+            +   *            ||: . ||:.     . .   .  ,   ||:   |               *
+                     *       ||:   ||:  ,     +       .  ||: , |      +
+              *              ||:   ||:.     +++++      . ||:   |         *
+                 +           ||:   ||.     +++++++  .    ||: . |    +
+                       +     ||: . ||: ,   +++++++ .  .  ||:   |             +
+                             ||: . ||: ,   +++++++ .  .  ||:   |        *
+                             ||: . ||: ,   +++++++ .  .  ||:   |               
+''') 
     print("Type 'start' to begin...")
     user_input = input()
     if user_input.lower() == 'start':
@@ -213,6 +234,8 @@ def print_menu(exits, room_items, inv_items):
     print("EQUIPPED to see what you have equipped")  
     print("EXAMINE followed by an items name to examine it")
     print("STATS to see your current stats")
+    if len(current_room["spawned"]) > 0:
+        print("FIGHT to fight the monster!")
     print("What do you want to do?")
 
 
@@ -245,6 +268,7 @@ def execute_go(direction):
                 item = all_items2[random.randint(0, len(all_items2) - 1)]
                 current_room["chest"].append(item)
             print(current_room['chest'])
+        spawn_mob(current_room)
     else:
         print("You cannot go there!")
 

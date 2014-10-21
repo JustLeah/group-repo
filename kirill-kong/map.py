@@ -1,4 +1,5 @@
 from items import *
+from mobs import *
 
 room_dark_cabin = {
     "name": "Dark Cabin",
@@ -9,8 +10,8 @@ send his slaves.""",
 
     "exits": {"south": "Damp Tunnel", "east": "Open Fields"},
     "chest": [],
-    "items": [item_rusty_sword, item_rusty_axe],
-    "mobs" : [],
+    "items": [item_rusty_sword],
+    "mobs" : [mob_one, mob_two, mob_three],
     "spawned": []
 
 }
@@ -25,7 +26,7 @@ that it's due to being short sighted and a lack of glasses""",
     "exits": {"south": "Dark Forest", "west": "Dark Cabin"},
     "chest": [],
     "items": [item_wooden_shield],
-    "mobs" : [],
+    "mobs" : [mob_one, mob_two, mob_three],
     "spawned": []
 
 }
@@ -40,7 +41,7 @@ filled with sweaty computer science students""",
     "exits": {"north": "Dark Cabin", "east": "Dark Forest"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_one, mob_two, mob_three],
     "spawned": []
 }
 
@@ -54,7 +55,7 @@ room_dark_forest = {
     "exits": {"north": "Open Fields", "west": "Damp Tunnel"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_one, mob_two, mob_three],
     "spawned": []
 }
 
@@ -67,7 +68,7 @@ room_dusty_path = {
     "exits": {"west": "Dim Track", "east": "Illuminated Road", "north": "Dark Forest"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_five, mob_nine, mob_ten],
     "spawned": []
 }
 room_dim_track = {
@@ -79,7 +80,7 @@ room_dim_track = {
     "exits": {"south": "Old Shack","east": "Dusty Path"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_five, mob_nine, mob_ten],
     "spawned": []
 }
 room_old_shack = {
@@ -91,7 +92,7 @@ room_old_shack = {
     "exits": {"north": "Dim Track"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_five, mob_nine, mob_ten],
     "spawned": []
 }
 room_illuminated_road= {
@@ -103,7 +104,7 @@ room_illuminated_road= {
     "exits": {"west": "Dusty Path", "east": "Damp Cave", "north": "Dark Path", "South": "Abandoned House"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_four, mob_thirteen, mob_fourteen],
     "spawned": []
 }
 room_abandoned_house= {
@@ -115,7 +116,7 @@ room_abandoned_house= {
     "exits": {"up": "Upstairs", "North": "Illuminated Road"},
     "chest": [],
     "items": [],
-    "mobs": [],
+    "mobs": [mob_twelve, mob_eleven],
     "spawned": []
 }
 room_upstairs= {
@@ -127,7 +128,7 @@ room_upstairs= {
     "exits": {"down": "Abandoned House"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_twelve, mob_eleven],
     "spawned": []
 }
 room_scary_path= {
@@ -139,7 +140,7 @@ room_scary_path= {
     "exits": {"south": "Illuminated Path", "east": "Haunted Forest"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_four, mob_thirteen, mob_fourteen],
     "spawned": []
 }
 room_haunted_forest= {
@@ -151,7 +152,7 @@ room_haunted_forest= {
     "exits": {"south": "Damp Cave","west": "Scary Path"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_four, mob_thirteen, mob_fourteen],
     "spawned": []
 }
 room_damp_cave= {
@@ -163,7 +164,7 @@ room_damp_cave= {
     "exits": {"east": "Castle Grounds","west": "Illuminated Road","north": "Haunted Forest"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_four, mob_thirteen, mob_fourteen],
     "spawned": []
 }
 room_castle_grounds= {
@@ -175,7 +176,7 @@ room_castle_grounds= {
     "exits": {"west": "damp cave", "south": "castle Tower"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_seven, mob_eight],
     "spawned": []
 }
 room_castle_tower= {
@@ -187,7 +188,7 @@ room_castle_tower= {
     "exits": {"north": "Castle Grounds","up": "The Chamber"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_seven, mob_eight],
     "spawned": []
 }
 room_the_chamber= {
@@ -199,7 +200,7 @@ room_the_chamber= {
     "exits": {"down": "Castle Tower"},
     "chest": [],
     "items": [],
-    "mobs" : [],
+    "mobs" : [mob_fifteen],
     "spawned": []
 }
 

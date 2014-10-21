@@ -1,10 +1,22 @@
 import random
+from kirillkong import *
 from player import *
 from mobs import *
+import copy
 import os, ctypes
 
+turn = "attack"
 damage_dealt = ""
-current_mob = ""
+damage_received = ""
+current_mob = "none"
+youattack = """
+			    ___  _______________   ________ __
+			   /   |/_  __/_  __/   | / ____/ //_/
+			  / /| | / /   / / / /| |/ /   / ,<   
+			 / ___ |/ /   / / / ___ / /___/ /| |  
+			/_/  |_/_/   /_/ /_/  |_\____/_/ |_|  
+		                                     
+"""
 fight_str = """
 		        _______  __    _______  __    __  ___________
 		       |   ____||  |  /  _____||  |  |  | |         |
@@ -14,51 +26,98 @@ fight_str = """
 		       |__|     |__|  \______| |__|  |__|    |__|     
 		                                                 
 """
+youdefend = """
+			    ____  ___________________   ______ 
+			   / __ \/ ____/ ____/ ____/ | / / __ \\
+			  / / / / __/ / /_  / __/ /  |/ / / / /
+			 / /_/ / /___/ __/ / /___/ /|  / /_/ / 
+			/_____/_____/_/   /_____/_/ |_/_____/  
+                                       
+"""
 
 def fight(current_mob_id):
-    while True:
-    	clear = lambda: os.system('cls')
-    	clear()
-    	if damage_dealt:
-    		print(str(damage_dealt) + " damage was dealt")
-    	#Set the mob passed through to the current mob
-    	current_mob = all_mobs[current_mob_id]
+	global current_mob
+	global damage_dealt
+	global damage_received
+	#Set the mob passed through to the current mob
+	if current_mob == "none":
+		current_mob = copy.deepcopy(all_mobs[current_mob_id])
+	while player['stats'][0] > 0 and current_mob['stats'][0] > 0:
+		clear = lambda: os.system('cls')
+		clear()
+		if type(damage_dealt) == int:
+			print(str(damage_dealt) + " damage was dealt")
+			damage_dealt = ""
+		if type(damage_received) == int:
+			print("You took %s damage!" % str(damage_received))
+			damage_received = ""
     	#Print the fight ASCII
-    	print(fight_str)
-    	join_names(current_mob_id)
-    	join_health_bars(current_mob_id)
-    	print()
-    	fight_attack(player, current_mob)
+		print(fight_str)
+		if turn == "attack":
+			print(youattack)
+		else:
+			print(youdefend)
+		join_names(current_mob)
+		join_health_bars(current_mob)
+		print()
+		if turn == "attack":
+			fight_attack(player, current_mob)
+		else:
+			fight_defend(current_mob, player)
+	else:
+		clear = lambda: os.system('cls')
+		clear()
+		del current_mob
+		del damage_dealt
+		damage_dealt = ""
+		current_mob = "none"
+		if player['stats'][0] <= 0:
+			game_over()
+			exit()
+			
 
 def fight_attack(attacker, defender):
 	global damage_dealt
+	global turn
 	attackroll = input("To attack please enter a number between 1-10: ")
-	if defender['id'] != "player":
-		defenceroll = random.randint(1, 10)
-	damagedifference = abs(int(attackroll) - int(defenceroll))
-	finaldamage = int(damagedifference) + int(attacker['stats'][1]) - int(defender['stats'][2])
-	damage_dealt = finaldamage
-	defender['stats'][0] = defender['stats'][0] - finaldamage
-	return(finaldamage)
+	if int(attackroll) < 11 and int(attackroll) > 0:
+		if defender['id'] != "player":
+			defenceroll = random.randint(1, 10)
+		damagedifference = abs(int(attackroll) - int(defenceroll))
+		finaldamage = int(damagedifference) + int(attacker['stats'][1]) - int(defender['stats'][2])
+		damage_dealt = finaldamage
+		defender['stats'][0] = defender['stats'][0] - finaldamage
+		turn = "defend"
+		return(finaldamage)
 
 
 def fight_defend(attacker, defender):
-	value = input("To defend please enter a number between 1-10")
+	global damage_received
+	global turn
+	player_defenseroll = input("To defend yourself please enter a number between 1-10: ")
+	if int(player_defenseroll) < 11 and int(player_defenseroll) > 0:
+		if attacker['id'] != "player":
+			mob_attackroll = random.randint(1,10)
+		damagedifference = abs(int(mob_attackroll) - int(player_defenseroll))
+		finaldamage = int(damagedifference) + int(attacker['stats'][1]) - int(defender['stats'][2])
+		damage_received = finaldamage
+		defender['stats'][0] = defender['stats'][0] - finaldamage
+		turn = "attack"
+		return(finaldamage)
+
 
 def print_player_bar(stats):
 	current_health = stats[0]
 	return "/" * current_health
 
-def print_mob_bar(current_mob_id):
-	current_mob = all_mobs[current_mob_id]
+def print_mob_bar(current_mob):
 	current_health = current_mob['stats'][0]
 	return "\\" * current_health
 
 def return_player_name():
 	return "You"
 
-def return_mob_name(current_mob_id):
-	current_mob = all_mobs[current_mob_id]
+def return_mob_name(current_mob):
 	return current_mob['name']
 
 def join_names(current_mob):
