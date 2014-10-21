@@ -428,7 +428,18 @@ def examine_item(item_name):
     """This function will pull up the description for an item"""
     #Turn the list to a string if more then one word
     item_name = ' '.join(item_name)
-    print(all_items[item_name]['description'])
+    if item_name in all_items:
+        print(all_items[item_name]['description'])
+    else:
+        counter = 1
+        while counter < len(all_mobs):
+            #print(normalise_input(all_mobs[str(counter)]['name']))
+            mobname = ' '.join(normalise_input(all_mobs[str(counter)]['name']))
+            if mobname == item_name:
+                print(all_mobs[str(counter)]['description'])
+                break
+            counter = counter + 1
+        
 
 
 def execute_command(command):
