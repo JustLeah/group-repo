@@ -8,8 +8,6 @@ equipped = {
 	"weapon": "none"
 }
 
-
-
 player = { 
  	"id": "player", 
  	"name": "You", 
@@ -18,5 +16,7 @@ player = {
  	"loot": [] 
  }
 
-#Start game at the reception
+#Start game at the Dark Cabin
 current_room = rooms["Dark Cabin"]
+#Used to test that Kirill Kong was spawning properly!
+#current_room = rooms["Castle Tower"]

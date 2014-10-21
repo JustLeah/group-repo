@@ -52,7 +52,7 @@ room_dark_forest = {
     """This forest is dark, dark enough to not have to worry about 
     hiding someones body. Ever.""",
 
-    "exits": {"north": "Open Fields", "west": "Damp Tunnel"},
+    "exits": {"north": "Open Fields", "west": "Damp Tunnel", "south": "Dusty Path"},
     "chest": [],
     "items": [],
     "mobs" : [mob_one, mob_two, mob_three],
@@ -101,7 +101,7 @@ room_illuminated_road= {
     "description":
     """This road is much better than the last two, you can see much clearer and it leads to many places.""",
 
-    "exits": {"west": "Dusty Path", "east": "Damp Cave", "north": "Dark Path", "South": "Abandoned House"},
+    "exits": {"west": "Dusty Path", "east": "Damp Cave", "north": "Scary Path", "South": "Abandoned House"},
     "chest": [],
     "items": [],
     "mobs" : [mob_four, mob_thirteen, mob_fourteen],
@@ -113,7 +113,7 @@ room_abandoned_house= {
     "description":
     """You are in an abandoned house, all the doors are locked, but there is a stair case leading upstairs.""",
 
-    "exits": {"up": "Upstairs", "North": "Illuminated Road"},
+    "exits": {"upstairs": "Upstairs", "North": "Illuminated Road"},
     "chest": [],
     "items": [],
     "mobs": [mob_twelve, mob_eleven],
@@ -137,7 +137,7 @@ room_scary_path= {
     "description":
     """At this point, you are very frightend. The way forward doesn't look to good either.""",
 
-    "exits": {"south": "Illuminated Path", "east": "Haunted Forest"},
+    "exits": {"south": "Illuminated Road", "east": "Haunted Forest"},
     "chest": [],
     "items": [],
     "mobs" : [mob_four, mob_thirteen, mob_fourteen],
@@ -161,7 +161,7 @@ room_damp_cave= {
     "description":
     """You're in a cave, the air is cold and wet. There are also squeaking sounds, they are probably the bats on the roof.""",
 
-    "exits": {"east": "Castle Grounds","west": "Illuminated Road","north": "Haunted Forest"},
+    "exits": {"south": "Castle Grounds", "west": "Illuminated Road", "north": "Haunted Forest"},
     "chest": [],
     "items": [],
     "mobs" : [mob_four, mob_thirteen, mob_fourteen],
@@ -173,7 +173,7 @@ room_castle_grounds= {
     "description":
     """You are in the grounds of Kirill Kong's castle, make sure you've got wepons! You never know what could be round the corner!""",
 
-    "exits": {"west": "damp cave", "south": "castle Tower"},
+    "exits": {"north": "Damp Cave", "south": "Castle Tower"},
     "chest": [],
     "items": [],
     "mobs" : [mob_seven, mob_eight],
@@ -185,7 +185,7 @@ room_castle_tower= {
     "description":
     """You're in a vary tall tower, with stairs leading to a chamber.""",
 
-    "exits": {"north": "Castle Grounds","up": "The Chamber"},
+    "exits": {"north": "Castle Grounds", "upstairs": "The Chamber"},
     "chest": [],
     "items": [],
     "mobs" : [mob_seven, mob_eight],
@@ -197,7 +197,7 @@ room_the_chamber= {
     "description":
     """You're in a very large chamber with very large gorilla. IT'S KIRILL KONG! Kill him and save Princess Matt""",
 
-    "exits": {"down": "Castle Tower"},
+    "exits": {"downstairs": "Castle Tower"},
     "chest": [],
     "items": [],
     "mobs" : [mob_fifteen],
@@ -219,6 +219,6 @@ rooms = {
     "Haunted Forest": room_haunted_forest,
     "Damp Cave": room_damp_cave,
     "Castle Grounds": room_castle_grounds,
-    "Caslte Tower": room_castle_tower,
+    "Castle Tower": room_castle_tower,
     "The Chamber": room_the_chamber,
 }

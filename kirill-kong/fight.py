@@ -35,10 +35,11 @@ youdefend = """
                                        
 """
 
-def fight(current_mob_id):
+def fight(current_mob_id, current_room):
 	global current_mob
 	global damage_dealt
 	global damage_received
+	initialhealth = player['stats'][0]
 	#Set the mob passed through to the current mob
 	if current_mob == "none":
 		current_mob = copy.deepcopy(all_mobs[current_mob_id])
@@ -67,10 +68,27 @@ def fight(current_mob_id):
 	else:
 		clear = lambda: os.system('cls')
 		clear()
+		
+		if current_mob['id'] == "15":
+			completion()
+			exit()
+
+		print("You have killed a %s!" % current_mob['name'])
+		counter = 0
+		randcounter = random.randint(0, len(current_mob['loot']))
+		for item in current_mob['loot']:
+			if randcounter == counter:
+				current_room['items'].append(item)
+				print("The %s dropped a %s!" % (current_mob['name'], item['name']))
+				break
+			counter = counter + 1
+		player['stats'][0] = initialhealth
 		del current_mob
 		del damage_dealt
 		damage_dealt = ""
 		current_mob = "none"
+		current_room['spawned'] = []
+
 		if player['stats'][0] <= 0:
 			game_over()
 			exit()
@@ -80,30 +98,32 @@ def fight_attack(attacker, defender):
 	global damage_dealt
 	global turn
 	attackroll = input("To attack please enter a number between 1-10: ")
-	if int(attackroll) < 11 and int(attackroll) > 0:
-		if defender['id'] != "player":
-			defenceroll = random.randint(1, 10)
-		damagedifference = abs(int(attackroll) - int(defenceroll))
-		finaldamage = int(damagedifference) + int(attacker['stats'][1]) - int(defender['stats'][2])
-		damage_dealt = finaldamage
-		defender['stats'][0] = defender['stats'][0] - finaldamage
-		turn = "defend"
-		return(finaldamage)
+	if attackroll:
+		if int(attackroll) < 11 and int(attackroll) > 0:
+			if defender['id'] != "player":
+				defenceroll = random.randint(1, 10)
+			damagedifference = abs(int(attackroll) - int(defenceroll))
+			finaldamage = int(damagedifference) + int(attacker['stats'][1]) - int(defender['stats'][2])
+			damage_dealt = finaldamage
+			defender['stats'][0] = defender['stats'][0] - finaldamage
+			turn = "defend"
+			return(finaldamage)
 
 
 def fight_defend(attacker, defender):
 	global damage_received
 	global turn
 	player_defenseroll = input("To defend yourself please enter a number between 1-10: ")
-	if int(player_defenseroll) < 11 and int(player_defenseroll) > 0:
-		if attacker['id'] != "player":
-			mob_attackroll = random.randint(1,10)
-		damagedifference = abs(int(mob_attackroll) - int(player_defenseroll))
-		finaldamage = int(damagedifference) + int(attacker['stats'][1]) - int(defender['stats'][2])
-		damage_received = finaldamage
-		defender['stats'][0] = defender['stats'][0] - finaldamage
-		turn = "attack"
-		return(finaldamage)
+	if player_defenseroll:
+		if int(player_defenseroll) < 11 and int(player_defenseroll) > 0:
+			if attacker['id'] != "player":
+				mob_attackroll = random.randint(1,10)
+			damagedifference = abs(int(mob_attackroll) - int(player_defenseroll))
+			finaldamage = int(damagedifference) + int(attacker['stats'][1]) - int(defender['stats'][2])
+			damage_received = finaldamage
+			defender['stats'][0] = defender['stats'][0] - finaldamage
+			turn = "attack"
+			return(finaldamage)
 
 
 def print_player_bar(stats):

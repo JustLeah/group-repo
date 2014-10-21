@@ -8,30 +8,35 @@ from mobs import *
 import os, ctypes
 
 def select_spawn(current_room):
-    randmob = int(random.randint(0,len((current_room["mobs"]))))
+    randmob = int(random.randint(1, len((current_room["mobs"]))))
     counter = 0
-    global spawned_mob
+    spawned_mob = ""
     for mob in current_room["mobs"]:
-        if counter == randmob:
+        if (counter + 1) == randmob:
             current_room["spawned"] = mob
             spawned_mob = mob
+            break
         counter = counter + 1
-    return spawned_mob["name"]
+    if spawned_mob != "" and spawned_mob != "None":    
+        return spawned_mob["name"]
 
     
 
 def spawn_mob(current_room):
-    mob_spawns = 0
-    mob_spawns = random.randint(1,2)
-    if mob_spawns <= 1:
-        print("")
-        print("A " + select_spawn(current_room) + " has appeared")
+        mob_spawns = random.randint(1,2)
+        if mob_spawns == 2 or current_room['name'] == 'The Chamber':
+            print("")
+            print("A " + str(select_spawn(current_room)) + " has appeared!")
 
 def completion():
     clear = lambda: os.system('cls')
     clear()
-    print("You Win!")
-    print('''           _____                             _         _       _   _                 _ 
+    print("""
+Congratulations you have defeated the evil ape overlord Kirill-Kong, therefore saving Princess Matt.
+The future of our course will be forever easier to understand! 
+Here have some cake, you have earned it!""")
+    print('''
+           _____                             _         _       _   _                 _ 
           /  __ \                           | |       | |     | | (_)               | |
           | /  \/ ___  _ __   __ _ _ __ __ _| |_ _   _| | __ _| |_ _  ___  _ __  ___| |
           | |    / _ \| '_ \ / _` | '__/ _` | __| | | | |/ _` | __| |/ _ \| '_ \/ __| |
@@ -54,43 +59,37 @@ def completion():
     """)
 
 def game_over():
-    """This function displays the end screen upon death or failure"""
+    #This function displays the end screen upon death or failure
     clear = lambda: os.system('cls')
     clear()
-    print("You have died!")
-    print( '''                  _____   ___  ___  ___ _____   _____  _   _ ___________   _ 
-                 |  __ \ / _ \ |  \/  ||  ___| |  _  || | | |  ___| ___ \ | |
-                 | |  \// /_\ \| .  . || |__   | | | || | | | |__ | |_/ / | |
-                 | | __ |  _  || |\/| ||  __|  | | | || | | |  __||    /  | |
-                 | |_\ \| | | || |  | || |___  \ \_/ /\ \_/ / |___| |\ \  |_|
-                  \____/\_| |_/\_|  |_/\____/   \___/  \___/\____/\_| \_| (_)''')
+    print("You have died! The evil ape overlord Kirill-Kong will reign supreme for the next millenia, you have failed us. No one will ever understand the lectures again, if only you saved Princess Matt!")
     print('''
-                                       uuuuuuu
-                                   uu$$$$$$$$$$$uu
-                                uu$$$$$$$$$$$$$$$$$uu
-                               u$$$$$$$$$$$$$$$$$$$$$u
-                              u$$$$$$$$$$$$$$$$$$$$$$$u
-                             u$$$$$$$$$$$$$$$$$$$$$$$$$u
-                             u$$$$$$$$$$$$$$$$$$$$$$$$$u
-                             u$$$$$$"   "$$$"   "$$$$$$u
-                             "$$$$"      u$u       $$$$"
-                              $$$u       u$u       u$$$
-                              $$$u      u$$$u      u$$$
-                               "$$$$uu$$$   $$$uu$$$$"
-                                "$$$$$$$"   "$$$$$$$"
-                                  u$$$$$$$u$$$$$$$u
-                                   u$"$"$"$"$"$"$u
-                        uuu        $$u$ $ $ $ $u$$       uuu
-                       u$$$$        $$$$$u$u$u$$$       u$$$$
-                        $$$$$uu      "$$$$$$$$$"     uu$$$$$$
-                      u$$$$$$$$$$$uu    """""    uuuu$$$$$$$$$$
-                      $$$$"""$$$$$$$$$$uuu   uu$$$$$$$$$"""$$$"
-                       """      ""$$$$$$$$$$$uu ""$"""
-                                 uuuu ""$$$$$$$$$$uuu
-                        u$$$uuu$$$$$$$$$uu ""$$$$$$$$$$$uuu$$$
-                        $$$$$$$$$$""""           ""$$$$$$$$$$$"
-                         "$$$$$"                      ""$$$$""
-                           $$$"                         $$$$"
+                                           uuuuuuu
+                                       uu$$$$$$$$$$$uu
+                                    uu$$$$$$$$$$$$$$$$$uu
+ _____   ___  ___  ___ _____       u$$$$$$$$$$$$$$$$$$$$$u        _____  _   _ ___________   _ 
+|  __ \ / _ \ |  \/  ||  ___|     u$$$$$$$$$$$$$$$$$$$$$$$u      |  _  || | | |  ___| ___ \ | |
+| |  \// /_\ \| .  . || |__      u$$$$$$$$$$$$$$$$$$$$$$$$$u     | | | || | | | |__ | |_/ / | |
+| | __ |  _  || |\/| ||  __|     u$$$$$$$$$$$$$$$$$$$$$$$$$u     | | | || | | |  __||    /  | |
+| |_\ \| | | || |  | || |___     u$$$$$$"   "$$$"   "$$$$$$u     \ \_/ /\ \_/ / |___| |\ \  |_|
+ \____/\_| |_/\_|  |_/\____/     "$$$$"      u$u       $$$$"      \___/  \___/\____/\_| \_| (_)
+                                  $$$u       u$u       u$$$
+                                  $$$u      u$$$u      u$$$
+                                   "$$$$uu$$$   $$$uu$$$$"
+                                    "$$$$$$$"   "$$$$$$$"
+                                      u$$$$$$$u$$$$$$$u
+                                       u$"$"$"$"$"$"$u
+                            uuu        $$u$ $ $ $ $u$$       uuu
+                           u$$$$        $$$$$u$u$u$$$       u$$$$
+                            $$$$$uu      "$$$$$$$$$"     uu$$$$$$
+                          u$$$$$$$$$$$uu    """""    uuuu$$$$$$$$$$
+                          $$$$"""$$$$$$$$$$uuu   uu$$$$$$$$$"""$$$"
+                           """      ""$$$$$$$$$$$uu ""$"""
+                                     uuuu ""$$$$$$$$$$uuu
+                            u$$$uuu$$$$$$$$$uu ""$$$$$$$$$$$uuu$$$
+                            $$$$$$$$$$""""           ""$$$$$$$$$$$"
+                             "$$$$$"                      ""$$$$""
+                               $$$"                         $$$$"              
  ''')
 
 def start():
@@ -122,7 +121,7 @@ def start():
                              ||: . ||: ,   +++++++ .  .  ||:   |        *
                              ||: . ||: ,   +++++++ .  .  ||:   |               
 ''') 
-    print("Type 'start' to begin...")
+    print("                                         Type start...")
     user_input = input()
     if user_input.lower() == 'start':
         clear = lambda: os.system('cls')
@@ -186,6 +185,9 @@ def print_room(room):
     print()
     if print_room_items(room):
         print()
+    if room['spawned']:
+        print('There is a %s here ready to FIGHT!' % room['spawned']['name'])
+        print()
 
 
 def exit_leads_to(exits, direction):
@@ -236,8 +238,16 @@ def print_menu(exits, room_items, inv_items):
     print("STATS to see your current stats")
     if len(current_room["spawned"]) > 0:
         print("FIGHT to fight the monster!")
+    if len(current_room["chest"]) > 0:
+        print("OPEN CHEST to open the chest and take the loot!")
     print("What do you want to do?")
 
+def open_chest():
+    global current_room
+    for item in current_room['chest']:
+        inventory.append(item)
+        print("You have picked up %s!" % item['name'])
+    current_room['chest'] = []
 
 def is_valid_exit(exits, chosen_exit):
     """This function checks, given a dictionary "exits" (see map.py) and
@@ -258,16 +268,17 @@ def execute_go(direction):
     direction = ' '.join(direction)
     if is_valid_exit(current_room['exits'], direction):
         current_room["chest"]=[]
+        if current_room['name'] != "The Chamber":
+            current_room['spawned'] = []
         current_room = rooms[current_room['exits'][direction]]
-        chance = 5      
+        chance = 100      
         randomnumber = random.randint(0, chance)
         if randomnumber <= 5:
             print("A chest has spawned!")
-            numberofitems = random.randint(1, 4)
+            numberofitems = random.randint(2, 3)
             for i in range (0, numberofitems):
                 item = all_items2[random.randint(0, len(all_items2) - 1)]
                 current_room["chest"].append(item)
-            print(current_room['chest'])
         spawn_mob(current_room)
     else:
         print("You cannot go there!")
@@ -429,65 +440,75 @@ def execute_command(command):
     #Clear the screen first!
     clear = lambda: os.system('cls')
     clear()
-    if command[0] == "go":
-        if len(command) > 1:
-            execute_go(command[1:])
-        else:
-            print("Go where?")
-
-    elif command[0] == "take":
-        if len(command) > 1:
-            execute_take(command[1:])
-        else:
-            print("Take what?")
-
-    elif command[0] == "equip":
-        if len(command) > 1:
-            equip_item(command[1:])
-        else:
-            print("Equip what?")
-
-    elif command[0] == "unequip":
-        if len(command) > 1:
-            unequip_item(command[1:])
-        else:
-            print("Unequip what?")
-
-    elif command[0] == "drop":
-        if len(command) > 1:
-            execute_drop(command[1:])
-        else:
-            if len(inventory) > 0:
-                for item in inventory:
-                    name = str(item['id']).upper()
-                    desc = str(item['name']).lower()
-                    print("DROP %s to drop %s" % (name, desc))
+    if command:
+        if command[0] == "go":
+            if len(command) > 1:
+                execute_go(command[1:])
             else:
-                print("You don't have anything to drop!")
+                print("Go where?")
 
-    elif command[0] == "equipped":
-        if len(command) == 1:
-            equipped_items()
+        elif command[0] == "take":
+            if len(command) > 1:
+                execute_take(command[1:])
+            else:
+                print("Take what?")
 
-    elif command[0] == "examine":
-        if len(command) == 1:
-            print("Use EXAMINE followed by item name e.g. EXAMINE RUSTY SWORD")
+        elif command[0] == "equip":
+            if len(command) > 1:
+                equip_item(command[1:])
+            else:
+                print("Equip what?")
+
+        elif command[0] == "unequip":
+            if len(command) > 1:
+                unequip_item(command[1:])
+            else:
+                print("Unequip what?")
+
+        elif command[0] == "drop":
+            if len(command) > 1:
+                execute_drop(command[1:])
+            else:
+                if len(inventory) > 0:
+                    for item in inventory:
+                        name = str(item['id']).upper()
+                        desc = str(item['name']).lower()
+                        print("DROP %s to drop %s" % (name, desc))
+                else:
+                    print("You don't have anything to drop!")
+
+        elif command[0] == "equipped":
+            if len(command) == 1:
+                equipped_items()
+
+        elif command[0] == "examine":
+            if len(command) == 1:
+                print("Use EXAMINE followed by item name e.g. EXAMINE RUSTY SWORD")
+            else:
+                examine_item(command[1:])
+
+        elif command[0] == "stats":
+            if len(command) == 1:
+                show_stats()
+
+        elif command[0] == "inventory":
+            if len(command) == 1:
+                print_inventory_items(inventory)
+
+        elif command[0] == "fight":
+            if current_room['spawned']:
+                fight(current_room['spawned']['id'], current_room)
+            else:
+                print("There is nothing to fight!")
+
+        elif command[0] == "open" and command[1] == "chest":
+            if current_room['chest']:
+                open_chest()
+            else:
+                print("There is chest to open!")
+
         else:
-            examine_item(command[1:])
-
-    elif command[0] == "stats":
-        if len(command) == 1:
-            show_stats()
-
-    elif command[0] == "inventory":
-        if len(command) == 1:
-            print_inventory_items(inventory)
-
-    elif command[0] == "fight":
-        fight(mob_one['id'])
-
-    else:
-        print("This makes no sense.")
+            print("This makes no sense." + str(command))
 
 
 def menu(exits, room_items):
@@ -539,6 +560,7 @@ def main():
 if __name__ == "__main__":
     #Clear the screen first!
     os.system("mode con cols=100")
+    os.system("mode con lines=30")
     clear = lambda: os.system('cls')
     clear()
     start()

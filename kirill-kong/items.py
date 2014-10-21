@@ -152,7 +152,7 @@ item_platinum_helmet = {
 }
 
 item_leather_chestplate = {
-    "id": "leather chest",
+    "id": "leather chestplate",
     "name": "a leather chestplate",
     "equipable" : True,
     "stats": [2, 0, 1],  
@@ -162,7 +162,7 @@ item_leather_chestplate = {
 }
 
 item_copper_chestplate = {
-    "id": "copper chest",
+    "id": "copper chestplate",
     "name": "a copper chestplate",
     "equipable" : True,
     "stats": [4, 0, 2],  
@@ -172,7 +172,7 @@ item_copper_chestplate = {
 }
 
 item_iron_chestplate = {
-    "id": "iron chest",
+    "id": "iron chestplate",
     "name": "an iron chestplate",
     "equipable" : True,
     "stats": [6, 0, 3],  
@@ -182,7 +182,7 @@ item_iron_chestplate = {
 }
 
 item_steel_chestplate = {
-    "id": "steel chest",
+    "id": "steel chestplate",
     "name": "a steel chestplate",
     "equipable" : True,
     "stats": [8, 0, 4],  
@@ -192,7 +192,7 @@ item_steel_chestplate = {
 }
 
 item_platinum_chestplate = {
-    "id": "platinum chest",
+    "id": "platinum chestplate",
     "name": "a platinum chestplate",
     "equipable" : True,
     "stats": [10, 0, 5],  
