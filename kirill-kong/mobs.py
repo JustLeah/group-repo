@@ -85,7 +85,7 @@ mob_eleven = {
  	"id": "11", 
  	"name": "Reaper", 
  	"stats": [21, 4, 4], 
- 	"description": "A hooded ghoul, beware it deathly touch", 
+ 	"description": "A hooded ghoul, beware it's deathly touch", 
  	"loot": [item_steel_sword, item_iron_shield, item_steel_helmet, item_steel_chestplate] 
  } 
 mob_twelve = { 

@@ -47,11 +47,19 @@ def fight(current_mob_id, current_room):
 		clear = lambda: os.system('cls')
 		clear()
 		if type(damage_dealt) == int:
-			print(str(damage_dealt) + " damage was dealt")
-			damage_dealt = ""
+			if damage_dealt > 0:
+				print(str(damage_dealt) + " damage was dealt")
+				damage_dealt = ""
+			else:
+				print("You dealt 0 damage!")
+				damage_dealt = ""
 		if type(damage_received) == int:
-			print("You took %s damage!" % str(damage_received))
-			damage_received = ""
+			if damage_received > 0:
+				print("You took %s damage!" % str(damage_received))
+				damage_received = ""
+			else:
+				print("You took 0 damage!")
+				damage_received = ""
     	#Print the fight ASCII
 		print(fight_str)
 		if turn == "attack":
