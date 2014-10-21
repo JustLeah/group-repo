@@ -39,3 +39,9 @@ all_items = {
     "rusty axe": item_rusty_axe,
     "wooden shield": item_wooden_shield
 }
+
+all_items2 = [
+     item_rusty_sword,
+     item_rusty_axe,
+     item_wooden_shield
+]

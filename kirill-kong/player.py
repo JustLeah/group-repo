@@ -8,11 +8,15 @@ equipped = {
 	"weapon": "none"
 }
 
-stats = {
-	"health": 10,
-	"attack": 1,
-	"defense": 1
-}
+
+
+player = { 
+ 	"id": "player", 
+ 	"name": "You", 
+ 	"stats": [15, 1, 1], 
+ 	"description": "RAWWRRRRRRRRR!", 
+ 	"loot": [] 
+ }
 
 #Start game at the reception
 current_room = rooms["Dark Cabin"]

@@ -7,6 +7,110 @@ from fight import *
 from mobs import *
 import os, ctypes
 
+def completion():
+    clear = lambda: os.system('cls')
+    clear()
+    print("You Win!")
+    print('''           _____                             _         _       _   _                 _ 
+          /  __ \                           | |       | |     | | (_)               | |
+          | /  \/ ___  _ __   __ _ _ __ __ _| |_ _   _| | __ _| |_ _  ___  _ __  ___| |
+          | |    / _ \| '_ \ / _` | '__/ _` | __| | | | |/ _` | __| |/ _ \| '_ \/ __| |
+          | \__/\ (_) | | | | (_| | | | (_| | |_| |_| | | (_| | |_| | (_) | | | \__ \_|
+           \____/\___/|_| |_|\__, |_|  \__,_|\__|\__,_|_|\__,_|\__|_|\___/|_| |_|___(_)
+                              __/ |                                                    
+                             |___/                                                     ''')
+
+    print("""
+                                           _____
+                                   _..--'''@   @'''--.._
+                                 .'   @_/-//-\/>/>'/ @  '.
+                                (  @  /_<//<'/----------^-)
+                                |'._  @     //|###########|
+                                |~  ''--..@|',|}}}}}}}}}}}|
+                                |  ~   ~   |/ |###########|
+                                | ~~  ~   ~|./|{{{{{{{{{{{|
+                                 '._ ~ ~ ~ |,/`````````````
+                                    ''--.~.|/
+    """)
+
+def game_over():
+    """This function displays the end screen upon death or failure"""
+    os.system('COLOR 52')
+    COLOR[4]
+    clear = lambda: os.system('cls')
+    clear()
+    print("You have died!")
+    print( '''                  _____   ___  ___  ___ _____   _____  _   _ ___________   _ 
+                 |  __ \ / _ \ |  \/  ||  ___| |  _  || | | |  ___| ___ \ | |
+                 | |  \// /_\ \| .  . || |__   | | | || | | | |__ | |_/ / | |
+                 | | __ |  _  || |\/| ||  __|  | | | || | | |  __||    /  | |
+                 | |_\ \| | | || |  | || |___  \ \_/ /\ \_/ / |___| |\ \  |_|
+                  \____/\_| |_/\_|  |_/\____/   \___/  \___/\____/\_| \_| (_)''')
+    print('''
+                                       uuuuuuu
+                                   uu$$$$$$$$$$$uu
+                                uu$$$$$$$$$$$$$$$$$uu
+                               u$$$$$$$$$$$$$$$$$$$$$u
+                              u$$$$$$$$$$$$$$$$$$$$$$$u
+                             u$$$$$$$$$$$$$$$$$$$$$$$$$u
+                             u$$$$$$$$$$$$$$$$$$$$$$$$$u
+                             u$$$$$$"   "$$$"   "$$$$$$u
+                             "$$$$"      u$u       $$$$"
+                              $$$u       u$u       u$$$
+                              $$$u      u$$$u      u$$$
+                               "$$$$uu$$$   $$$uu$$$$"
+                                "$$$$$$$"   "$$$$$$$"
+                                  u$$$$$$$u$$$$$$$u
+                                   u$"$"$"$"$"$"$u
+                        uuu        $$u$ $ $ $ $u$$       uuu
+                       u$$$$        $$$$$u$u$u$$$       u$$$$
+                        $$$$$uu      "$$$$$$$$$"     uu$$$$$$
+                      u$$$$$$$$$$$uu    """""    uuuu$$$$$$$$$$
+                      $$$$"""$$$$$$$$$$uuu   uu$$$$$$$$$"""$$$"
+                       """      ""$$$$$$$$$$$uu ""$"""
+                                 uuuu ""$$$$$$$$$$uuu
+                        u$$$uuu$$$$$$$$$uu ""$$$$$$$$$$$uuu$$$
+                        $$$$$$$$$$""""           ""$$$$$$$$$$$"
+                         "$$$$$"                      ""$$$$""
+                           $$$"                         $$$$"
+ ''')
+
+def start():
+    clear = lambda: os.system('cls')
+    clear()
+    print ('''
+       _  _____ ____  ___ _     _               _  _____  _   _  ____ 
+      | |/ /_ _|  _ \|_ _| |   | |             | |/ / _ \| \ | |/ ___|
+      | ' / | || |_) || || |   | |      _____  | ' / | | |  \| | |  _ 
+      | . \ | ||  _ < | || |___| |___  |_____| | . \ |_| | |\  | |_| |
+      |_|\_\___|_| \_\___|_____|_____|         |_|\_\___/|_| \_|\____|''')   
+    print ('''
+*                             |>>>                    +
++          *                      |                   *       +
+                    |>>>      _  _|_  _   *     |>>>
+           *        |        |;| |;| |;|        |                 *
+     +          _  _|_  _    \\.    .  /    _  _|_  _       +
+ *             |;|_|;|_|;|    \\: +   /    |;|_|;|_|;|
+               \\..      /    ||:+++. |    \\.    .  /           *
+      +         \\.  ,  /     ||:+++  |     \\:  .  /
+                 ||:+  |_   _ ||_ . _ | _   _||:+  |       *
+          *      ||+++.|||_|;|_|;|_|;|_|;|_|;||+++ |          +
+                 ||+++ ||.    .     .      . ||+++.|   *
++   *            ||: . ||:.     . .   .  ,   ||:   |               *
+         *       ||:   ||:  ,     +       .  ||: , |      +
+  *              ||:   ||:.     +++++      . ||:   |         *
+     +           ||:   ||.     +++++++  .    ||: . |    +
+           +     ||: . ||: ,   +++++++ .  .  ||:   |             +
+                 ||: . ||: ,   +++++++ .  .  ||:   |        *
+                 ||: . ||: ,   +++++++ .  .  ||:   |               ''') 
+    print("Type 'start' to begin...")
+    user_input = input()
+    if user_input.lower() == 'start':
+        clear = lambda: os.system('cls')
+        clear()
+        main()
+    else:
+        start()
 
 
 def list_of_items(items):
@@ -132,7 +236,17 @@ def execute_go(direction):
     global current_room
     direction = ' '.join(direction)
     if is_valid_exit(current_room['exits'], direction):
+        current_room["chest"]=[]
         current_room = rooms[current_room['exits'][direction]]
+        chance = 5      
+        randomnumber = random.randint(0, chance)
+        if randomnumber <= 5:
+            print("A chest has spawned!")
+            numberofitems = random.randint(1, 4)
+            for i in range (0, numberofitems):
+                item = all_items2[random.randint(0, len(all_items2) - 1)]
+                current_room["chest"].append(item)
+            print(current_room['chest'])
     else:
         print("You cannot go there!")
 
@@ -197,13 +311,13 @@ def equip_item(item_id):
                 statcounter = 0
                 for s in all_items[item_id]['stats']:
                     if statcounter == 0:  
-                        stats['health'] = stats['health'] + s
+                        player['stats'][statcounter] = player['stats'][statcounter] + s
                         statcounter = statcounter + 1
                     elif statcounter == 1:  
-                        stats['attack'] = stats['attack'] + s
+                        player['stats'][statcounter] = player['stats'][statcounter] + s
                         statcounter = statcounter + 1
                     elif statcounter == 2:  
-                        stats['defense'] = stats['defense'] + s
+                        player['stats'][statcounter] = player['stats'][statcounter] + s
                         statcounter = statcounter + 1
                 print("%s has been equipped!" % item_id.upper()) 
             else:
@@ -233,13 +347,13 @@ def unequip_item(item_id):
                 statcounter = 0
                 for s in all_items[item_id]['stats']:
                     if statcounter == 0:  
-                        stats['health'] = stats['health'] - s
+                        player['stats'][statcounter] = player['stats'][statcounter] - s
                         statcounter = statcounter + 1
                     elif statcounter == 1:  
-                        stats['attack'] = stats['attack'] - s
+                        player['stats'][statcounter] = player['stats'][statcounter] - s
                         statcounter = statcounter + 1
                     elif statcounter == 2:  
-                        stats['defense'] = stats['defense'] - s
+                        player['stats'][statcounter] = player['stats'][statcounter] - s
                         statcounter = statcounter + 1
                 print("%s has been unequipped!" % item_id.upper())
                 break   
@@ -262,9 +376,19 @@ def equipped_items():
 
 def show_stats():
     """This function will show you your current stat values
-    """  
-    for s in stats:
-        print("Your current %s is %i." % (s.upper(), stats[s]))
+    """ 
+    counter = 0 
+    for s in player['stats']:
+        statname = ""
+        if counter == 0:
+            statname = "health"
+        elif counter == 1:
+            statname = "attack"
+        elif counter == 2:
+            statname = "defense"
+
+        print("Your current %s is %i." % (statname.upper(), player['stats'][counter]))
+        counter = counter + 1
 
 
 def examine_item(item_name):
@@ -338,7 +462,7 @@ def execute_command(command):
             print_inventory_items(inventory)
 
     elif command[0] == "fight":
-        fight()
+        fight(mob_one['id'])
 
     else:
         print("This makes no sense.")
@@ -395,4 +519,4 @@ if __name__ == "__main__":
     os.system("mode con cols=100")
     clear = lambda: os.system('cls')
     clear()
-    main()
+    start()
