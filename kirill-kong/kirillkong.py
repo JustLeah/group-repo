@@ -581,7 +581,7 @@ def main():
 if __name__ == "__main__":
     #Clear the screen first!
     os.system("mode con cols=100")
-    os.system("mode con lines=30")
+    os.system("mode con lines=35")
     clear = lambda: os.system('cls')
     clear()
     start()
