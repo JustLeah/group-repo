@@ -1,4 +1,5 @@
 import string
+import re
 
 # List of "unimportant" words (feel free to add more)
 skip_words = ['a', 'about', 'all', 'an', 'another', 'any', 'around', 'at',
@@ -83,3 +84,7 @@ def normalise_input(user_input):
     #split in to a list of words 
     final_words = filter_words(no_punct.split(), skip_words)
     return final_words
+
+def strip_text(string):
+    seq_type= type(string)
+    return seq_type().join(filter(seq_type.isdigit, string))

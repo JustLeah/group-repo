@@ -271,7 +271,7 @@ def execute_go(direction):
         if current_room['name'] != "The Chamber":
             current_room['spawned'] = []
         current_room = rooms[current_room['exits'][direction]]
-        chance = 100      
+        chance = 50      
         randomnumber = random.randint(0, chance)
         if randomnumber <= 5:
             print("A chest has spawned!")
@@ -529,7 +529,7 @@ def execute_command(command):
                 print("There is chest to open!")
 
         else:
-            print("This makes no sense." + str(command))
+            print("This makes no sense.")
 
 
 def menu(exits, room_items):

@@ -2,6 +2,7 @@ import random
 from kirillkong import *
 from player import *
 from mobs import *
+from newparse import *
 import copy
 import os, ctypes
 
@@ -104,7 +105,7 @@ def fight(current_mob_id, current_room):
 def fight_attack(attacker, defender):
 	global damage_dealt
 	global turn
-	attackroll = input("To attack please enter a number between 1-10: ")
+	attackroll = strip_text(input("To attack please enter a number between 1-10: "))
 	if attackroll:
 		if int(attackroll) < 11 and int(attackroll) > 0:
 			if defender['id'] != "player":
@@ -112,7 +113,8 @@ def fight_attack(attacker, defender):
 			damagedifference = abs(int(attackroll) - int(defenceroll))
 			finaldamage = int(damagedifference) + int(attacker['stats'][1]) - int(defender['stats'][2])
 			damage_dealt = finaldamage
-			defender['stats'][0] = defender['stats'][0] - finaldamage
+			if finaldamage > 0:
+				defender['stats'][0] = defender['stats'][0] - finaldamage
 			turn = "defend"
 			return(finaldamage)
 
@@ -120,7 +122,7 @@ def fight_attack(attacker, defender):
 def fight_defend(attacker, defender):
 	global damage_received
 	global turn
-	player_defenseroll = input("To defend yourself please enter a number between 1-10: ")
+	player_defenseroll = strip_text(input("To defend yourself please enter a number between 1-10: "))
 	if player_defenseroll:
 		if int(player_defenseroll) < 11 and int(player_defenseroll) > 0:
 			if attacker['id'] != "player":
@@ -128,7 +130,8 @@ def fight_defend(attacker, defender):
 			damagedifference = abs(int(mob_attackroll) - int(player_defenseroll))
 			finaldamage = int(damagedifference) + int(attacker['stats'][1]) - int(defender['stats'][2])
 			damage_received = finaldamage
-			defender['stats'][0] = defender['stats'][0] - finaldamage
+			if finaldamage > 0:
+				defender['stats'][0] = defender['stats'][0] - finaldamage
 			turn = "attack"
 			return(finaldamage)
 
