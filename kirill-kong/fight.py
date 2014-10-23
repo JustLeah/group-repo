@@ -6,6 +6,7 @@ from newparse import *
 import copy
 import os, ctypes
 
+#Initilising variblies that will be used later on
 turn = "attack"
 damage_dealt = ""
 damage_received = ""
@@ -35,15 +36,17 @@ youdefend = """
 			/_____/_____/_/   /_____/_/ |_/_____/  
                                        
 """
-
+#This is the main fight loop it calls on the attacking and defending functions
 def fight(current_mob_id, current_room):
 	global current_mob
 	global damage_dealt
 	global damage_received
 	initialhealth = player['stats'][0]
 	#Set the mob passed through to the current mob
+	#Make a deep copy so that we can change the mob values without editing the actual mob
 	if current_mob == "none":
 		current_mob = copy.deepcopy(all_mobs[current_mob_id])
+	#Checck that both the player and mob are alive
 	while player['stats'][0] > 0 and current_mob['stats'][0] > 0:
 		clear = lambda: os.system('cls')
 		clear()
@@ -74,6 +77,8 @@ def fight(current_mob_id, current_room):
 			fight_attack(player, current_mob)
 		else:
 			fight_defend(current_mob, player)
+	#Check which person is dead and either show the game over screen if its a player
+	#Or drop the loot if its a mob		
 	else:
 		clear = lambda: os.system('cls')
 		clear()
@@ -101,7 +106,7 @@ def fight(current_mob_id, current_room):
 		current_mob = "none"
 		current_room['spawned'] = []
 	
-
+#This function will calculate the damage that has been done and return that value
 def fight_attack(attacker, defender):
 	global damage_dealt
 	global turn
@@ -118,7 +123,7 @@ def fight_attack(attacker, defender):
 			turn = "defend"
 			return(finaldamage)
 
-
+#This function will calculate the damage that has been taken and return that value
 def fight_defend(attacker, defender):
 	global damage_received
 	global turn
@@ -135,11 +140,12 @@ def fight_defend(attacker, defender):
 			turn = "attack"
 			return(finaldamage)
 
-
+#Make a health bar
 def print_player_bar(stats):
 	current_health = stats[0]
 	return "/" * current_health
 
+#Make a health bar
 def print_mob_bar(current_mob):
 	current_health = current_mob['stats'][0]
 	return "\\" * current_health
@@ -150,6 +156,7 @@ def return_player_name():
 def return_mob_name(current_mob):
 	return current_mob['name']
 
+#Join the player and mob names and set a certain amount of spaces so that it takes up the whole screen
 def join_names(current_mob):
 	mob_name = return_mob_name(current_mob)
 	player_name = return_player_name()
@@ -158,6 +165,7 @@ def join_names(current_mob):
 	spaces = " " * amountofspaces
 	print(player_name + spaces + mob_name)
 
+#Join the player and mob health bars and set a certain amount of spaces so that it takes up the whole screen
 def join_health_bars(current_mob_id):
 	phealth = print_player_bar(player['stats'])
 	mhealth = print_mob_bar(current_mob_id)

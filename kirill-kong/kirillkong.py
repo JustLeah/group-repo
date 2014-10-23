@@ -7,6 +7,7 @@ from fight import *
 from mobs import *
 import os, ctypes
 
+#Choose a random mob from the rooms spawn table
 def select_spawn(current_room):
     randmob = int(random.randint(1, len((current_room["mobs"]))))
     counter = 0
@@ -21,13 +22,14 @@ def select_spawn(current_room):
         return spawned_mob["name"]
 
     
-
+#Spawn the set mob from that room
 def spawn_mob(current_room):
         mob_spawns = random.randint(1,3)
         if mob_spawns <= 3 or current_room['name'] == 'The Chamber':
             print("")
             print("A " + str(select_spawn(current_room)) + " has appeared!")
 
+#Completion screen
 def completion():
     clear = lambda: os.system('cls')
     clear()
