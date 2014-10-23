@@ -10,7 +10,7 @@ send his slaves.""",
 
     "exits": {"south": "Damp Tunnel", "east": "Open Fields"},
     "chest": [],
-    "items": [item_rusty_sword],
+    "items": [item_rusty_sword, item_wooden_shield],
     "mobs" : [mob_one, mob_two, mob_three],
     "spawned": []
 
@@ -25,7 +25,7 @@ that it's due to being short sighted and a lack of glasses""",
 
     "exits": {"south": "Dark Forest", "west": "Dark Cabin"},
     "chest": [],
-    "items": [item_wooden_shield],
+    "items": [],
     "mobs" : [mob_one, mob_two, mob_three],
     "spawned": []
 

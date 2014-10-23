@@ -11,7 +11,7 @@ equipped = {
 player = { 
  	"id": "player", 
  	"name": "You", 
- 	"stats": [20, 3, 3], 
+ 	"stats": [15, 1, 1], 
  	"description": "RAWWRRRRRRRRR!", 
  	"loot": [] 
  }
