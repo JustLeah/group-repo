@@ -433,24 +433,24 @@ def examine_item(item_name):
     if item_name in all_items:
         print(all_items[item_name]['description'])
     else:
-        counter = 1
-        while counter < len(all_mobs):
+        counterone = 1
+        while counterone < len(all_mobs):
             #print(normalise_input(all_mobs[str(counter)]['name']))
-            mobname = ' '.join(normalise_input(all_mobs[str(counter)]['name']))
+            mobname = ' '.join(normalise_input(all_mobs[str(counterone)]['name']))
             if mobname == item_name:
-                print(all_mobs[str(counter)]['description'])
+                print(all_mobs[str(counterone)]['description'])
                 counter = 0
                 if counter == 0:
-                    print("This mob has %i health!" % all_mobs[str(counter)]['stats'][counter])
+                    print("This mob has %i health!" % all_mobs[str(counterone)]['stats'][counter])
                     counter = counter + 1
                 if counter == 1:
-                    print("This mob has %i attack!" % all_mobs[str(counter)]['stats'][counter])
+                    print("This mob has %i attack!" % all_mobs[str(counterone)]['stats'][counter])
                     counter = counter + 1
                 if counter == 2:
-                    print("This mob has %i defense!" % all_mobs[str(counter)]['stats'][counter])
+                    print("This mob has %i defense!" % all_mobs[str(counterone)]['stats'][counter])
                     counter = counter + 1
                 break
-            counter = counter + 1
+            counterone = counterone + 1
         
 
 
@@ -524,11 +524,12 @@ def execute_command(command):
             else:
                 print("There is nothing to fight!")
 
-        elif command[0] == "open" and command[1] == "chest":
-            if current_room['chest']:
-                open_chest()
-            else:
-                print("There is chest to open!")
+        elif len(command) > 1:
+            if command[0] == "open" and command[1] == "chest":
+                if current_room['chest']:
+                    open_chest()
+                else:
+                    print("There is chest to open!")
 
         else:
             print("This makes no sense.")
